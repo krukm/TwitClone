@@ -18,6 +18,8 @@
 		DF3DBBB42568777600B5BFA4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF3DBBB32568777600B5BFA4 /* .gitignore */; };
 		DF3DBBB52568777600B5BFA4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF3DBBB32568777600B5BFA4 /* .gitignore */; };
 		DF3DBBB62568777600B5BFA4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF3DBBB32568777600B5BFA4 /* .gitignore */; };
+		DF3DBBB8256881D800B5BFA4 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3DBBB7256881D800B5BFA4 /* SignInViewModel.swift */; };
+		DF3DBBBA2568B0C700B5BFA4 /* SignInViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3DBBB92568B0C700B5BFA4 /* SignInViewTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		DF3DBBA125672B7D00B5BFA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF3DBBAF2567310A00B5BFA4 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		DF3DBBB32568777600B5BFA4 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
+		DF3DBBB7256881D800B5BFA4 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		DF3DBBB92568B0C700B5BFA4 /* SignInViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				DF3DBB8825672B7D00B5BFA4 /* LaunchScreen.storyboard */,
 				DF3DBB8B25672B7D00B5BFA4 /* Info.plist */,
 				DF3DBBAF2567310A00B5BFA4 /* SignInView.swift */,
+				DF3DBBB7256881D800B5BFA4 /* SignInViewModel.swift */,
 			);
 			path = TwitClone;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			children = (
 				DF3DBB9425672B7D00B5BFA4 /* TwitCloneTests.swift */,
 				DF3DBB9625672B7D00B5BFA4 /* Info.plist */,
+				DF3DBBB92568B0C700B5BFA4 /* SignInViewTest.swift */,
 			);
 			path = TwitCloneTests;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 				DF3DBB7E25672B7C00B5BFA4 /* AppDelegate.swift in Sources */,
 				DF3DBBB02567310A00B5BFA4 /* SignInView.swift in Sources */,
 				DF3DBB8025672B7C00B5BFA4 /* SceneDelegate.swift in Sources */,
+				DF3DBBB8256881D800B5BFA4 /* SignInViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF3DBBBA2568B0C700B5BFA4 /* SignInViewTest.swift in Sources */,
 				DF3DBB9525672B7D00B5BFA4 /* TwitCloneTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

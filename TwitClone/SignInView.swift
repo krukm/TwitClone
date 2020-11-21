@@ -5,30 +5,33 @@ class SignInView: UIView {
     
     private lazy var signInStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.backgroundColor = .clear
-        stackView.axis = .vertical
         stackView.alignment = .fill
+        stackView.axis = .vertical
         stackView.distribution = .equalCentering
         stackView.spacing = CGFloat(20)
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "sign_in_stack_view"
         return stackView
     }()
     
-    private lazy var logo : UIImageView = {
+    private lazy var logoImageView : UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "twitter_logo")?.rounded
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.accessibilityIdentifier = "logo_image_view"
         return imageView
     }()
     
     private lazy var textFieldStackView: UIStackView = {
        let stackView = UIStackView()
-        stackView.axis = .vertical
         stackView.alignment = .fill
+        stackView.axis = .vertical
         stackView.distribution = .equalSpacing
         stackView.spacing = CGFloat(10)
         stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "text_field_stack_view"
         return stackView
     }()
     
@@ -39,6 +42,7 @@ class SignInView: UIView {
         textField.layer.cornerRadius = 5
         textField.clipsToBounds = true
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.accessibilityIdentifier = "email_text_field"
         return textField
     }()
     
@@ -49,15 +53,18 @@ class SignInView: UIView {
         textField.clipsToBounds = true
         textField.backgroundColor = UIColor.white
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.accessibilityIdentifier = "password_text_field"
         return textField
     }()
     
     private lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.axis = .horizontal
         stackView.alignment = .center
+        stackView.axis = .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = CGFloat(20)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "button_stack_view"
         return stackView
     }()
     
@@ -67,6 +74,8 @@ class SignInView: UIView {
         button.setTitleColor(.darkGray, for: .normal)
         button.setTitle("sign in", for: .normal)
         button.layer.cornerRadius = 5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "sign_in_button"
         return button
     }()
     
@@ -76,12 +85,16 @@ class SignInView: UIView {
         button.setTitleColor(.darkGray, for: .normal)
         button.setTitle("sign up", for: .normal)
         button.layer.cornerRadius = 5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "sign_up_button"
         return button
     }()
     
     private lazy var forgotPasswordButton: UIButton = {
         let button = UIButton()
         button.setTitle("forgot your password?", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "forgot_password_button"
         return button
     }()
     
@@ -99,7 +112,7 @@ class SignInView: UIView {
     private func setupViews() {
         backgroundColor = .systemTeal
         addSubview(signInStackView)
-        signInStackView.addArrangedSubview(logo)
+        signInStackView.addArrangedSubview(logoImageView)
         signInStackView.addArrangedSubview(textFieldStackView)
         textFieldStackView.addArrangedSubview(emailTextField)
         textFieldStackView.addArrangedSubview(passwordTextField)
@@ -117,7 +130,7 @@ class SignInView: UIView {
         constraints.append(signInStackView.centerYAnchor.constraint(equalTo: centerYAnchor))
         constraints.append(signInStackView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.40))
         
-        constraints.append(logo.bottomAnchor.constraint(equalTo: textFieldStackView.topAnchor, constant: -50))
+        constraints.append(logoImageView.bottomAnchor.constraint(equalTo: textFieldStackView.topAnchor, constant: -50))
         
         constraints.append(emailTextField.heightAnchor.constraint(equalToConstant: CGFloat(30)))
         constraints.append(passwordTextField.heightAnchor.constraint(equalToConstant: CGFloat(30)))
