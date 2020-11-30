@@ -24,7 +24,6 @@
 		DF3DBBBA2568B0C700B5BFA4 /* SignInViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3DBBB92568B0C700B5BFA4 /* SignInViewTest.swift */; };
 		DFA41C8E256C5D9B005799F5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C8D256C5D9B005799F5 /* FeedViewController.swift */; };
 		DFA41CAB256CBE90005799F5 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41CAA256CBE90005799F5 /* TweetTableViewCell.swift */; };
-		DFA41CB8256D75F1005799F5 /* TweetCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41CB7256D75F1005799F5 /* TweetCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +70,6 @@
 		DF3DBBB92568B0C700B5BFA4 /* SignInViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewTest.swift; sourceTree = "<group>"; };
 		DFA41C8D256C5D9B005799F5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		DFA41CAA256CBE90005799F5 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
-		DFA41CB7256D75F1005799F5 /* TweetCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCellViewModel.swift; sourceTree = "<group>"; };
 		FA633107FFA338EF3E22CF24 /* Pods_TwitClone_TwitCloneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitClone_TwitCloneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -162,7 +160,6 @@
 				DF3DBBB7256881D800B5BFA4 /* AuthorizationViewModel.swift */,
 				DFA41C8D256C5D9B005799F5 /* FeedViewController.swift */,
 				DFA41CAA256CBE90005799F5 /* TweetTableViewCell.swift */,
-				DFA41CB7256D75F1005799F5 /* TweetCellViewModel.swift */,
 			);
 			path = TwitClone;
 			sourceTree = "<group>";
@@ -431,7 +428,6 @@
 				DF3DBBB02567310A00B5BFA4 /* SignInView.swift in Sources */,
 				DF3DBB8025672B7C00B5BFA4 /* SceneDelegate.swift in Sources */,
 				DFA41C8E256C5D9B005799F5 /* FeedViewController.swift in Sources */,
-				DFA41CB8256D75F1005799F5 /* TweetCellViewModel.swift in Sources */,
 				DF3DBBB8256881D800B5BFA4 /* AuthorizationViewModel.swift in Sources */,
 				DFA41CAB256CBE90005799F5 /* TweetTableViewCell.swift in Sources */,
 			);

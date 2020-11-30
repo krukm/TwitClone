@@ -2,7 +2,6 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
     
-    var viewModel = TweetCellViewModel()
     var showCheckMark: Bool = false
     
     private lazy var tweetStackView: UIStackView = {
@@ -110,7 +109,7 @@ class TweetTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         var constraints = tweetStackView.fill(superview: contentView, withLayoutMargins: true)
-                
+        
         constraints.append(checkMarkImageView.heightAnchor.constraint(equalToConstant: 20))
         constraints.append(checkMarkImageView.widthAnchor.constraint(equalToConstant: 20))
         
@@ -118,7 +117,7 @@ class TweetTableViewCell: UITableViewCell {
         constraints.append(tweetTextView.trailingAnchor.constraint(equalTo: tweetStackView.trailingAnchor))
         
         constraints.append(headerStackView.widthAnchor.constraint(equalTo: tweetTextView.widthAnchor))
-
+        
         NSLayoutConstraint.activate(constraints)
     }
 }
@@ -134,8 +133,8 @@ class PaddedLabel: UILabel {
     override var intrinsicContentSize : CGSize {
         let superContentSize = super.intrinsicContentSize
         let width = superContentSize.width + padding.left + padding.right
-        let heigth = superContentSize.height + padding.top + padding.bottom
-        return CGSize(width: width, height: heigth)
+        let height = superContentSize.height + padding.top + padding.bottom
+        return CGSize(width: width, height: height)
     }
     
     init(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat) {
