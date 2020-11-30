@@ -1,0 +1,27 @@
+PODS:
+  - Keys (1.0.1)
+  - Swifter (2.4.0)
+
+DEPENDENCIES:
+  - Keys (from `Pods/CocoaPodsKeys`)
+  - Swifter (from `https://github.com/mattdonnelly/Swifter.git`, tag `2.4.0`)
+
+EXTERNAL SOURCES:
+  Keys:
+    :path: Pods/CocoaPodsKeys
+  Swifter:
+    :git: https://github.com/mattdonnelly/Swifter.git
+    :tag: 2.4.0
+
+CHECKOUT OPTIONS:
+  Swifter:
+    :git: https://github.com/mattdonnelly/Swifter.git
+    :tag: 2.4.0
+
+SPEC CHECKSUMS:
+  Keys: a576f4c9c1c641ca913a959a9c62ed3f215a8de9
+  Swifter: 0955a05325dc182fabfb1468305aef887180e0f1
+
+PODFILE CHECKSUM: c36d1015d2219d5506f1fa84449277e9cb23d61f
+
+COCOAPODS: 1.10.0
