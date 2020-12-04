@@ -2,16 +2,18 @@ import Keys
 import Swifter
 import UIKit
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, UITableViewDelegate, UIScrollViewDelegate {
     var swifter: Swifter
     let keys = TwitCloneKeys()
     let authViewModel: AuthorizationViewModel
     
     var tweetFeed: [TweetTableViewCell] = []
+    private var isLoading: Bool = false
     
     lazy var  tableView: UITableView = {
         let tableView = UITableView(frame: self.view.bounds)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
@@ -25,13 +27,18 @@ class FeedViewController: UIViewController {
         setupTableView()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+    }
+    
     init(authorizationViewModel: AuthorizationViewModel) {
         self.authViewModel = authorizationViewModel
         let oauthToken : String = UserDefaults.standard.value(forKey: "oauth_token") as! String
         let oauthTokenSecret : String  = UserDefaults.standard.value(forKey: "oauth_token_secret") as! String
         self.swifter = Swifter(consumerKey: authViewModel.clientKey, consumerSecret: authViewModel.secreteKey, oauthToken: oauthToken, oauthTokenSecret: oauthTokenSecret)
         super.init(nibName: nil, bundle: nil)
-        self.getHomeTimeLine()
+        self.getHomeTimeLine() { }
     }
     
     required init?(coder: NSCoder) {
@@ -46,10 +53,9 @@ class FeedViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-    func getHomeTimeLine() {
+    func getHomeTimeLine(completion: () -> ()?) {
         swifter.getHomeTimeline(count: 10, success: { json in
-
-            self.tweetFeed = []
+            var tempTweetFeed = [TweetTableViewCell]()
 
             if let tweetData = json.array {
                 for tweet in tweetData {
@@ -58,7 +64,7 @@ class FeedViewController: UIViewController {
 
                     if let profileImageURL = tweet["user"]["profile_image_url_https"].string {
                         let imageUrlString = profileImageURL
-                        let imageUrl = URL(string: imageUrlString)!
+                        guard let imageUrl = URL(string: imageUrlString) else { return }
                         let image = try? UIImage(withContentsOfUrl: imageUrl)
                         tweetTableCell.profileImageView.image = image?.rounded?.withAlignmentRectInsets(UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5))
                     }
@@ -82,16 +88,45 @@ class FeedViewController: UIViewController {
                     if let time = tweet["user"]["created_at"].string {
                         tweetTableCell.tweetTimeLabel.text = time
                     }
-                    self.tweetFeed.append(tweetTableCell)
-
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+                    
+                    tempTweetFeed.append(tweetTableCell)
                 }
             }
+            
+            self.tweetFeed.append(contentsOf: tempTweetFeed)
+            self.isLoading = false
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
         }, failure: { error in
             print(error.localizedDescription)
         })
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !isLoading {
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            if (scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                tableView.tableFooterView = loadSpinner()
+                isLoading = true
+                getHomeTimeLine() { tableView.tableFooterView = nil }
+            }
+        }
+    }
+    
+    private func loadSpinner() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let spinner = UIActivityIndicatorView()
+        
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        spinner.startAnimating()
+        
+        return footerView
     }
 }
 
@@ -121,13 +156,11 @@ extension FeedViewController: UITableViewDataSource {
 }
 
 extension UIImage {
-    
     convenience init?(withContentsOfUrl url: URL) throws {
         let imageData = try Data(contentsOf: url)
         
         self.init(data: imageData)
     }
-    
 }
 
 public extension UIImage {
