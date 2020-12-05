@@ -26,15 +26,16 @@ class SignInViewController: UIViewController, SFSafariViewControllerDelegate {
         guard let url = URL(string: "TwitClone://") else { return }
         self.swifter = Swifter(consumerKey: viewModel.clientKey, consumerSecret: viewModel.secreteKey)
         self.swifter?.authorize(withCallback: url, presentingFrom: self, success: { accessToken, _ in
+            
             self.viewModel.accessToken = accessToken
             self.authorizeUser()
+            
         }, failure: { error in
             print(error.localizedDescription)
         })
     }
     
     func authorizeUser() {
-        
         self.swifter?.verifyAccountCredentials(includeEntities: false, skipStatus: false, includeEmail: true, success: { json in
             self.viewModel.twitterAccessToken = self.viewModel.accessToken?.key ?? "No access key exists"
             

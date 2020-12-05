@@ -12,6 +12,7 @@ class TweetTableViewCell: UITableViewCell {
         stackView.layer.masksToBounds = true
         stackView.backgroundColor = .white
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "tweet_stack_view"
         return stackView
     }()
     
@@ -20,6 +21,7 @@ class TweetTableViewCell: UITableViewCell {
         imageView.image = UIImage(color: .lightGray)?.rounded?.withAlignmentRectInsets(UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5))
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.accessibilityIdentifier = "profile_image_view"
         return imageView
     }()
     
@@ -29,6 +31,7 @@ class TweetTableViewCell: UITableViewCell {
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "body_stack_view"
         return stackView
     }()
     
@@ -40,22 +43,25 @@ class TweetTableViewCell: UITableViewCell {
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.accessibilityIdentifier = "header_stack_view"
         return stackView
     }()
     
     lazy var handleLabel: UILabel = {
         let label = PaddedLabel(top: 0, left: 0, bottom: 0, right: 5)
-        label.font = label.font.withSize(14)
         label.textAlignment = .right
+        label.font = label.font.withSize(14)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "handel_label"
         return label
     }()
     
-    lazy var checkMarkImageView: UIImageView = {
+    lazy var checkmarkImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "twitter_verified")
         imageView.isHidden = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.accessibilityIdentifier = "check_mark_image_view"
         return imageView
     }()
     
@@ -63,6 +69,7 @@ class TweetTableViewCell: UITableViewCell {
         let label = PaddedLabel(top: 5, left: 5, bottom: 5, right: 5)
         label.font = label.font.withSize(12)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "name_label"
         return label
     }()
     
@@ -71,14 +78,16 @@ class TweetTableViewCell: UITableViewCell {
         label.textAlignment = .right
         label.font = label.font.withSize(12)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "tweet_time_label"
         return label
     }()
     
-    lazy var tweetTextView: UILabel = {
+    lazy var tweetTextLabel: UILabel = {
         let label = PaddedLabel(top: 10, left: 0, bottom: 10, right: 15)
-        label.numberOfLines = 0
         label.font = label.font.withSize(18)
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.accessibilityIdentifier = "tweet_text_label"
         return label
     }()
     
@@ -100,9 +109,9 @@ class TweetTableViewCell: UITableViewCell {
         tweetStackView.addArrangedSubview(profileImageView)
         tweetStackView.addArrangedSubview(bodyStackView)
         bodyStackView.addArrangedSubview(headerStackView)
-        bodyStackView.addArrangedSubview(tweetTextView)
+        bodyStackView.addArrangedSubview(tweetTextLabel)
         headerStackView.addArrangedSubview(handleLabel)
-        headerStackView.addArrangedSubview(checkMarkImageView)
+        headerStackView.addArrangedSubview(checkmarkImageView)
         headerStackView.addArrangedSubview(nameLabel)
         headerStackView.addArrangedSubview(tweetTimeLabel)
     }
@@ -110,13 +119,13 @@ class TweetTableViewCell: UITableViewCell {
     private func setupConstraints() {
         var constraints = tweetStackView.fill(superview: contentView, withLayoutMargins: true)
         
-        constraints.append(checkMarkImageView.heightAnchor.constraint(equalToConstant: 20))
-        constraints.append(checkMarkImageView.widthAnchor.constraint(equalToConstant: 20))
+        constraints.append(checkmarkImageView.heightAnchor.constraint(equalToConstant: 20))
+        constraints.append(checkmarkImageView.widthAnchor.constraint(equalToConstant: 20))
         
-        constraints.append(tweetTextView.widthAnchor.constraint(equalTo: tweetStackView.widthAnchor, multiplier: 0.8))
-        constraints.append(tweetTextView.trailingAnchor.constraint(equalTo: tweetStackView.trailingAnchor))
+        constraints.append(tweetTextLabel.widthAnchor.constraint(equalTo: tweetStackView.widthAnchor, multiplier: 0.8))
+        constraints.append(tweetTextLabel.trailingAnchor.constraint(equalTo: tweetStackView.trailingAnchor))
         
-        constraints.append(headerStackView.widthAnchor.constraint(equalTo: tweetTextView.widthAnchor))
+        constraints.append(headerStackView.widthAnchor.constraint(equalTo: tweetTextLabel.widthAnchor))
         
         NSLayoutConstraint.activate(constraints)
     }

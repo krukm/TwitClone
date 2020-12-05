@@ -1,5 +1,4 @@
 @testable import TwitClone
-import Foundation
 import XCTest
 
 class SignInViewTest: XCTestCase {
@@ -20,14 +19,14 @@ class SignInViewTest: XCTestCase {
         
         
         if let signInStackView = signInStackView, let logoImageView = logoImageView, let signInButton = signInButton {
-            XCTAssertEqual(signInStackView.alignment, UIStackView.Alignment.fill)
-            XCTAssertEqual(signInStackView.axis, NSLayoutConstraint.Axis.vertical)
-            XCTAssertEqual(signInStackView.distribution, UIStackView.Distribution.equalCentering)
-            XCTAssertEqual(signInStackView.spacing, CGFloat(20))
+            XCTAssertEqual(signInStackView.alignment, .fill)
+            XCTAssertEqual(signInStackView.axis, .vertical)
+            XCTAssertEqual(signInStackView.distribution, .equalCentering)
+            XCTAssertEqual(signInStackView.spacing, 20)
             XCTAssertNil(signInStackView.backgroundColor)
             
             XCTAssertNotNil(logoImageView.image)
-            XCTAssertEqual(logoImageView.contentMode, UIImageView.ContentMode.scaleAspectFit)
+            XCTAssertEqual(logoImageView.contentMode, .scaleAspectFit)
             
             XCTAssertEqual(signInButton.backgroundColor, .white)
             XCTAssertEqual(signInButton.titleColor(for: .normal), .darkGray)

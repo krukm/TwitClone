@@ -22,6 +22,9 @@
 		DF3DBBB62568777600B5BFA4 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF3DBBB32568777600B5BFA4 /* .gitignore */; };
 		DF3DBBB8256881D800B5BFA4 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3DBBB7256881D800B5BFA4 /* AuthorizationViewModel.swift */; };
 		DF3DBBBA2568B0C700B5BFA4 /* SignInViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3DBBB92568B0C700B5BFA4 /* SignInViewTest.swift */; };
+		DF4F8410257B175D00FCB0E3 /* SignInViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4F840F257B175D00FCB0E3 /* SignInViewControllerTest.swift */; };
+		DF4F841D257B1A5700FCB0E3 /* TweetTableCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4F841C257B1A5700FCB0E3 /* TweetTableCellTest.swift */; };
+		DF4F8422257BCE6500FCB0E3 /* FeedViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4F8421257BCE6500FCB0E3 /* FeedViewControllerTest.swift */; };
 		DFA41C8E256C5D9B005799F5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41C8D256C5D9B005799F5 /* FeedViewController.swift */; };
 		DFA41CAB256CBE90005799F5 /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA41CAA256CBE90005799F5 /* TweetTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +71,9 @@
 		DF3DBBB32568777600B5BFA4 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
 		DF3DBBB7256881D800B5BFA4 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		DF3DBBB92568B0C700B5BFA4 /* SignInViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewTest.swift; sourceTree = "<group>"; };
+		DF4F840F257B175D00FCB0E3 /* SignInViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewControllerTest.swift; sourceTree = "<group>"; };
+		DF4F841C257B1A5700FCB0E3 /* TweetTableCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableCellTest.swift; sourceTree = "<group>"; };
+		DF4F8421257BCE6500FCB0E3 /* FeedViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTest.swift; sourceTree = "<group>"; };
 		DFA41C8D256C5D9B005799F5 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		DFA41CAA256CBE90005799F5 /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		FA633107FFA338EF3E22CF24 /* Pods_TwitClone_TwitCloneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitClone_TwitCloneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +175,9 @@
 			children = (
 				DF3DBB9625672B7D00B5BFA4 /* Info.plist */,
 				DF3DBBB92568B0C700B5BFA4 /* SignInViewTest.swift */,
+				DF4F840F257B175D00FCB0E3 /* SignInViewControllerTest.swift */,
+				DF4F841C257B1A5700FCB0E3 /* TweetTableCellTest.swift */,
+				DF4F8421257BCE6500FCB0E3 /* FeedViewControllerTest.swift */,
 			);
 			path = TwitCloneTests;
 			sourceTree = "<group>";
@@ -437,6 +446,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF4F841D257B1A5700FCB0E3 /* TweetTableCellTest.swift in Sources */,
+				DF4F8410257B175D00FCB0E3 /* SignInViewControllerTest.swift in Sources */,
+				DF4F8422257BCE6500FCB0E3 /* FeedViewControllerTest.swift in Sources */,
 				DF3DBBBA2568B0C700B5BFA4 /* SignInViewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

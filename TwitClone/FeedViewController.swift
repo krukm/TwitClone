@@ -19,6 +19,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UIScrollViewDel
         tableView.separatorStyle = .none
         tableView.backgroundColor = .systemTeal
         tableView.register(TweetTableViewCell.self, forCellReuseIdentifier: "tweet_cell")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -29,7 +30,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UIScrollViewDel
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
     }
     
     init(authorizationViewModel: AuthorizationViewModel) {
@@ -47,14 +47,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UIScrollViewDel
     
     func setupTableView() {
         view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         
         let constraints = tableView.fill(superview: view)
         NSLayoutConstraint.activate(constraints)
     }
     
     func getHomeTimeLine(completion: () -> ()?) {
-        swifter.getHomeTimeline(count: 10, success: { json in
+        swifter.getHomeTimeline(count: 10, success: { [weak self] json in
             var tempTweetFeed = [TweetTableViewCell]()
 
             if let tweetData = json.array {
@@ -82,7 +81,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UIScrollViewDel
                     }
 
                     if let text = tweet["text"].string {
-                        tweetTableCell.tweetTextView.text = text
+                        tweetTableCell.tweetTextLabel.text = text
                     }
 
                     if let time = tweet["user"]["created_at"].string {
@@ -93,11 +92,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UIScrollViewDel
                 }
             }
             
-            self.tweetFeed.append(contentsOf: tempTweetFeed)
-            self.isLoading = false
+            self?.tweetFeed.append(contentsOf: tempTweetFeed)
+            self?.isLoading = false
             
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
             
         }, failure: { error in
@@ -145,10 +144,10 @@ extension FeedViewController: UITableViewDataSource {
         cell.handleLabel.text = tweetFeed[indexPath.row].handleLabel.text
         cell.nameLabel.text = tweetFeed[indexPath.row].nameLabel.text
         cell.tweetTimeLabel.text = "18m"
-        cell.tweetTextView.text = tweetFeed[indexPath.row].tweetTextView.text
+        cell.tweetTextLabel.text = tweetFeed[indexPath.row].tweetTextLabel.text
 
         if tweetFeed[indexPath.row].showCheckMark {
-            cell.checkMarkImageView.isHidden = false
+            cell.checkmarkImageView.isHidden = false
         }
 
         return cell
