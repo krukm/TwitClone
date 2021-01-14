@@ -32,6 +32,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UIScrollViewDel
         super.viewDidLayoutSubviews()
     }
     
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
+    }
+    
     init(authorizationViewModel: AuthorizationViewModel) {
         self.authViewModel = authorizationViewModel
         let oauthToken : String = UserDefaults.standard.value(forKey: "oauth_token") as! String
@@ -54,6 +66,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UIScrollViewDel
     
     func getHomeTimeLine(completion: () -> ()?) {
         swifter.getHomeTimeline(count: 10, success: { [weak self] json in
+            
             var tempTweetFeed = [TweetTableViewCell]()
 
             if let tweetData = json.array {
@@ -81,13 +94,15 @@ class FeedViewController: UIViewController, UITableViewDelegate, UIScrollViewDel
                     }
 
                     if let text = tweet["text"].string {
-                        tweetTableCell.tweetTextLabel.text = text
+                        let string = tweetTableCell.limitStringLength(text, length: 280)
+                        tweetTableCell.tweetTextLabel.text = string
                     }
 
-                    if let time = tweet["user"]["created_at"].string {
-                        tweetTableCell.tweetTimeLabel.text = time
+                    if let time = tweet["created_at"].string {
+                        let string = tweetTableCell.formatTweetTime(currentDate: Date(), timeStamp: time)
+                        let timeString = tweetTableCell.limitStringLength(string, length: 4)
+                        tweetTableCell.tweetTimeLabel.text = timeString
                     }
-                    
                     tempTweetFeed.append(tweetTableCell)
                 }
             }
@@ -143,7 +158,7 @@ extension FeedViewController: UITableViewDataSource {
         cell.profileImageView.image = tweetFeed[indexPath.row].profileImageView.image
         cell.handleLabel.text = tweetFeed[indexPath.row].handleLabel.text
         cell.nameLabel.text = tweetFeed[indexPath.row].nameLabel.text
-        cell.tweetTimeLabel.text = "18m"
+        cell.tweetTimeLabel.text = tweetFeed[indexPath.row].tweetTimeLabel.text
         cell.tweetTextLabel.text = tweetFeed[indexPath.row].tweetTextLabel.text
 
         if tweetFeed[indexPath.row].showCheckMark {
